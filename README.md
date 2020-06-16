@@ -2,7 +2,7 @@
 
 Author: Dave Wolfe
 Links and Resources
-submission PR
+[submission PR1](https://github.com/wolfes-401-advanced-javascript/api-server/pull/1)
 [Swagger Hub](https://app.swaggerhub.com/apis/d-d-wolfe/Lab06/0.1) 
 ci/cd (GitHub Actions)
 back-end server url (when applicable)
