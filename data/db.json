@@ -1,0 +1,41 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "Dave",
+      "display_name": "Wolfe",
+      "description": "The Wolfe man!"
+    },
+    {
+      "name": "Jane",
+      "id": 2
+    },
+    {
+      "name": "John",
+      "id": 3
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "category": "art",
+      "name": "crayon",
+      "display_name": "Crayola",
+      "description": "The most awesome coloring item around"
+    },
+    {
+      "name": "Lemonade",
+      "category": "Soda",
+      "description": "Minute Maid Diet Lemonade",
+      "price": 1.99,
+      "id": 2
+    },
+    {
+      "name": "Cola",
+      "category": "Soda",
+      "description": "Diet Pepsi",
+      "price": 1.99,
+      "id": 3
+    }
+  ]
+}
