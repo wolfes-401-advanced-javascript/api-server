@@ -3,39 +3,41 @@
 const express = require('express');
 const router = express.Router();
 
-router.post('/', postProduct)
-router.get('/', getProducts)
-router.get('/:id', getProductById)
-router.put('/:id', updateProductById)
-router.delete('/:id', deleteProductById)
+const Products = require('../lib/models/products/products-collection.js');
+
+const Product = new Products();
+
+router.post('/', postProduct);
+router.get('/', getProducts);
+router.get('/:id', getProductById);
+router.put('/:id', updateProductById);
+router.delete('/:id', deleteProductById);
 
 
-function postProduct(req, res) {
-  
+async function postProduct(req, res) {
+  const results = await Product.create(req.body);
+  res.send('Product saved!')
 }
 
-router.post('/', (req, res) => {
-  
-  res.send(`Product made ${req.body}`);
-});
+async function getProducts(req, res) {
+  const results = await Product.read();
+  res.send(results);
+}
 
-router.get('/', (req, res) => {
-  res.send(products);
-});
+async function getProductById(req, res) {
+  const results = await Product.get(req.params.id);
+  res.send(results);
+}
 
-router.get('/:id', (req, res) => {
-  
-  res.send(req.body);
-});
+async function updateProductById(req, res) {
+  const results = await Product.update(req.params.id, req.body);
+  res.send(`Updated ${req.params.id}`);
+}
 
-router.put('/:id', (req, res) => {
-  
-  res.send('update product by id');
-});
+async function deleteProductById(req, res) {
+  const results = await Product.delete(req.params.id);
+  res.send(`Product ID: ${req.params.id} has been deleted`);
+}
 
-router.delete('/:id', (req, res) => {
-  
-  res.send(`Product Id: ${req.params.id} has been deleted`);
-});
 
 module.exports = router;
