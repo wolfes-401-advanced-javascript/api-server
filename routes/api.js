@@ -3,31 +3,33 @@
 const express = require('express');
 const router = express.Router();
 
-const productSchema = require('../lib/models/products/products-schema');
+const modelFinder = require('../middleware/model-finder.js')
 
-const categorySchema = require('../lib/models/categories/categories-schema')
+// const productSchema = require('../lib/models/products/products-schema');
 
-const Mongo = require('../lib/models/mongo.js');
+// const categorySchema = require('../lib/models/categories/categories-schema')
 
-function getModel(req, res, next) {
-  let model = req.params.model;
+// const Mongo = require('../lib/models/mongo.js');
 
-  switch (model) {
-    case 'products':
-      req.model = new Mongo(productSchema);
-      next();
-      break;
-      case 'categories':
-        req.model = new Mongo(categorySchema);
-        next();
-        break;
-        default:
-          next('Wrong Model, dude!');
-          break;
-  }
-}
+// function getModel(req, res, next) {
+//   let model = req.params.model;
 
-router.param('model', getModel);
+//   switch (model) {
+//     case 'products':
+//       req.model = new Mongo(productSchema);
+//       next();
+//       break;
+//       case 'categories':
+//         req.model = new Mongo(categorySchema);
+//         next();
+//         break;
+//         default:
+//           next('Wrong Model, dude!');
+//           break;
+//   }
+// }
+
+router.param('model', modelFinder);
 
 router.post('/:model', postNew);
 router.get('/:model', getAll);
@@ -37,7 +39,7 @@ router.delete('/:model/:id', deleteById);
 
 function postNew(req, res) {
   req.model.create(req.body)
-    .then(results => res.send('Product saved!', results))
+    .then(results => res.send('Product saved!' + results))
     .catch(err => res.send(err));
   
 }
