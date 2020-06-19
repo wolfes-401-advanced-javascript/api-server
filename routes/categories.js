@@ -24,7 +24,7 @@ async function getCategories(req, res) {
 }
 
 async function getCategoryById(req, res) {
-  const results = await Category.get(req.params.id);
+  const results = await Category.read(req.params.id);
   res.send(results);
 }
 

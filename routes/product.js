@@ -25,7 +25,7 @@ async function getProducts(req, res) {
 }
 
 async function getProductById(req, res) {
-  const results = await Product.get(req.params.id);
+  const results = await Product.read(req.params.id);
   res.send(results);
 }
 
