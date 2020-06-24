@@ -15,7 +15,7 @@ const mongoose = require('mongoose');
  */
 
 mongoose.connect(process.env.MONGO_URI_PORT, {
-  useNewURlParser: true,
+  useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
 })
